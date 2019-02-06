@@ -1,0 +1,547 @@
+<html>
+	<head>
+		<title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+		</style>
+	</head>
+	<body>
+		<script src="three.js"></script>
+		<script src="OrbitControls.js"></script>
+		<script>
+			var scene = new THREE.Scene();
+			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+
+			var geometry = new THREE.BoxGeometry( 1.5, 1.5, 1.5 );
+			//var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 , wireframe: true } );
+
+			
+/*var CubeMaterials1=
+			[
+
+
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('1.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('pre.jpg'),side: THREE.DoubleSide} ),
+		
+]
+
+var CubeMaterials2=
+			[
+
+
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('2.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('pre.jpg'),side: THREE.DoubleSide} ),
+		
+]*/
+
+
+
+
+
+			var CubeMaterials12=
+			[
+
+
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('html.png'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('12.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('html.png'),side: THREE.DoubleSide} ),
+		
+]
+			var CubeMaterials11=
+			[
+
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('html.png'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('11.png'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('html.png'),side: THREE.DoubleSide} )
+			
+]
+
+var CubeMaterials10=
+			[
+
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('mt.png'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('10.jpg '),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('mt.png'),side: THREE.DoubleSide} )
+			
+]
+
+var CubeMaterials8=
+			[
+
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('mt.png'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('mt.png'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('8.jpg '),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('mt.png'),side: THREE.DoubleSide} )
+			
+]
+
+var CubeMaterials4=
+			[
+
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('pt.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('4.jpg '),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('pt.jpg'),side: THREE.DoubleSide} )
+			
+]
+
+
+
+var CubeMaterials7=
+			[
+
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('pt.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('7.jpg '),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('pt.jpg'),side: THREE.DoubleSide} )
+			
+]
+
+
+var CubeMaterials3=
+			[
+
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('3.jpg '),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('verde.jpg'),side: THREE.DoubleSide} )
+			
+]
+
+
+var CubeMaterials5=
+			[
+
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('php.png'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('php.png'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('5.jpg '),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('php.png'),side: THREE.DoubleSide} )
+			
+]
+
+
+var CubeMaterials6=
+			[
+
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('java.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('6.jpg '),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('java.jpg'),side: THREE.DoubleSide} )
+			
+]
+
+var CubeMaterials9=
+			[
+
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ubi.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('java.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('9.jpg '),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('java.jpg'),side: THREE.DoubleSide} )
+			
+]
+
+var CubeMaterialsfinal=
+			[
+
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('wtf.jpg'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ps.png'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ps.png'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ps.png'),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('wtf.jpg '),side: THREE.DoubleSide} ),
+			new THREE.MeshBasicMaterial ( { map : new THREE.TextureLoader().load('ps.png'),side: THREE.DoubleSide} )
+			
+]
+
+
+
+
+
+
+
+
+
+
+
+		
+
+			/*var cube1 = new THREE.Mesh( geometry, CubeMaterials1 );
+			
+
+			cube1.position.x = 2;
+			cube1.position.y = 2;
+
+			scene.add( cube1 );
+
+
+
+			var cube2 = new THREE.Mesh( geometry, CubeMaterials2 );
+
+			cube2.position.x = 2;
+			cube2.position.y = 0;
+
+			scene.add( cube2 );
+
+
+			var cube3 = new THREE.Mesh( geometry, CubeMaterials3 );
+
+			cube3.position.x = 2;
+			cube3.position.y = -2;
+
+			scene.add( cube3 );*/
+
+
+
+			var cube4 = new THREE.Mesh( geometry, CubeMaterials4 );
+
+			cube4.position.x = 0;
+			cube4.position.y = -2;
+
+			scene.add( cube4 );
+
+
+			var cube5 = new THREE.Mesh( geometry, CubeMaterials5 );
+
+			cube5.position.x = 0;
+			cube5.position.y = 0;
+
+			scene.add( cube5 );
+
+
+			var cube6 = new THREE.Mesh( geometry, CubeMaterials6 );
+
+			cube6.position.x = 0;
+			cube6.position.y = 2;
+
+			scene.add( cube6 );
+			
+
+
+			var cube7 = new THREE.Mesh( geometry, CubeMaterials7 );
+
+			cube7.position.x = -2;
+			cube7.position.y = 2;
+
+			scene.add( cube7 );
+
+
+			var cube8 = new THREE.Mesh( geometry, CubeMaterials8 );
+
+			cube8.position.x = -2;
+			cube8.position.y = 0;
+
+			scene.add( cube8 );
+
+
+
+			var cube9 = new THREE.Mesh( geometry, CubeMaterials9 );
+
+			cube9.position.x = -2;
+			cube9.position.y = -2;
+
+			scene.add( cube9 );
+
+
+			var cube10 = new THREE.Mesh( geometry, CubeMaterials10 );
+
+			cube10.position.x = -4;
+			cube10.position.y = -2;
+
+			scene.add( cube10 );
+
+
+			var cube11 = new THREE.Mesh( geometry, CubeMaterials11 );
+
+			cube11.position.x = -4;
+			cube11.position.y = 0;
+
+			scene.add( cube11 );
+
+
+			var cube12 = new THREE.Mesh( geometry, CubeMaterials12);
+
+			cube12.position.x = -4;
+			cube12.position.y = 2;
+
+			scene.add( cube12 );
+
+
+			
+
+var cubefinal = new THREE.Mesh(geometry, CubeMaterialsfinal);
+							cubefinal.position.x = 200;
+							cubefinal.position.y = 220;
+
+			
+
+
+			
+
+			
+			
+
+
+
+
+			camera.position.z = 6;
+
+			//controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+			//var flag1=0;
+			//var flag2=0;
+			//var flar3=0;
+			var flag4=0;
+			var flag5=0;
+			var flag6=0;
+			var flag7=0;
+			var flag8=0;
+			var flag9=0;
+			var flag10=0;
+			var flag11=0;
+			var flag12=0;
+			var count=0;
+			//var rt1=1.0;
+			//var rt2=1.0;
+			//var rt3=1.0;
+			var rt4=1.0;
+			var rt5=1.0;
+			var rt6=1.0;
+			var rt7=1.0;
+			var rt8=1.0;
+			var rt9=1.0;
+			var rt10=1.0;
+			var rt11=1.0;
+			var rt12=1.0;
+			var final=0;
+			
+
+			var animate = function () {
+				requestAnimationFrame( animate );
+
+
+			renderer.render(scene, camera);
+			};
+
+
+			var onKeyDown = function ( event ) {
+					switch ( event.which ) {
+						case 81:rt12=1.0;
+								setInterval(function(){ cube12.rotation.x += rt12; }, 150);
+								flag12=1;
+								break;
+
+
+						case 65:rt11=1.0;
+								setInterval(function(){ cube11.rotation.x += rt11; }, 150);
+								flag11=1;
+								break;
+
+						case 90:rt10=1.0;
+								setInterval(function(){ cube10.rotation.x += rt10; }, 150);
+								flag10=1;
+								break;
+
+
+						case 88:rt9=1.0;
+								setInterval(function(){ cube9.rotation.x += rt9; }, 150);
+								flag9=1;
+								break;
+
+						case 83:rt8=1.0;
+								setInterval(function(){ cube8.rotation.x += rt8; }, 150);
+								flag8=1;
+								break;
+
+						case 87:rt7=1.0;
+								setInterval(function(){ cube7.rotation.x += rt7; }, 150);
+								flag7=1;
+								break;
+
+						case 69:rt6=1.0;
+								setInterval(function(){ cube6.rotation.x += rt6; }, 150);
+								flag6=1;
+								break;
+
+						case 68:rt5=1.0;
+								setInterval(function(){ cube5.rotation.x += rt5; }, 150);
+								flag5=1;
+								break;
+
+						case 67:rt4=1.0;
+								setInterval(function(){ cube4.rotation.x += rt4; }, 150);
+								flag4=1;
+								break;
+
+						/*case 86:rt3=1.0;
+								setInterval(function(){ cube3.rotation.x += rt3; }, 150);
+								flag3=1;
+								break;
+
+						case 70:rt2=1.0;
+								setInterval(function(){ cube2.rotation.x += rt2; }, 150);//F
+								flag2=1;
+								break;
+
+						case 82:rt1=1.0;
+								setInterval(function(){ cube1.rotation.x += rt1; }, 150);//R
+								flag1=1;
+								break;	*/
+				}
+				verificar();
+				
+			};
+
+
+			animate();
+			document.addEventListener( 'keydown', onKeyDown, false );
+
+			var verificar = function (){
+				
+				if(flag12 ==1 || flag11==1 || flag10==1 || flag9==1 || flag8==1 || flag7==1 || flag6==1 || flag5==1 || flag4==1 || flag3==1 || flag2==1 || flag1==1){
+					count++;
+				}
+
+
+					if(count%2 == 0){
+
+						if(flag12==1 && flag11==1){
+
+							scene.remove( cube11 );
+							scene.remove( cube12 );
+							flag11=2;
+							flag12=2;
+							final++;
+
+						}
+
+						if(flag9==1 && flag6==1){
+
+							scene.remove( cube9 );
+							scene.remove( cube6 );
+							flag9=2;
+							flag6=2;
+							final++;
+
+						}
+
+						if(flag8==1 && flag10==1){
+
+							scene.remove( cube8 );
+							scene.remove( cube10 );
+							flag8=2;
+							flag10=2;
+							final++;
+
+						}
+
+						if(flag4==1 && flag7==1){
+
+							scene.remove( cube4 );
+							scene.remove( cube7 );
+							flag4=2;
+							flag7=2;
+							final++;
+
+						}
+
+						
+						if(final==4){
+							scene.remove(cube5);
+							cubefinal.position.x = 0;
+							cubefinal.position.y = 0;
+							scene.add(cubefinal);
+							setInterval(function(){ cubefinal.rotation.x += 1.0; cubefinal.rotation.y += 1.0; cubefinal.rotation.z += 1.0; }, 125);
+
+							
+							
+						}
+						
+						else{cube12.rotation.x += 1.0;
+							flag1=0;
+							flag2=0;
+							flar3=0;
+							flag4=0;
+							flag5=0;
+							flag6=0;
+							flag7=0;
+							flag8=0;
+							flag9=0;
+							flag10=0;
+							flag11=0;
+							flag12=0;
+							rt12=0;
+							rt11=0;
+							rt10=0;
+							rt9=0;
+							rt8=0;
+							rt7=0;
+							rt6=0;
+							rt5=0;
+							rt4=0;
+							rt3=0;
+							rt2=0;
+							rt1=0;
+							cube12.rotation.x =0;
+							cube11.rotation.x =0;
+							cube10.rotation.x =0;
+							cube9.rotation.x =0;
+							cube8.rotation.x =0;
+							cube7.rotation.x =0;
+							cube6.rotation.x =0;
+							cube5.rotation.x =0;
+							cube4.rotation.x =0;
+							cube3.rotation.x =0;
+							cube2.rotation.x =0;
+							cube1.rotation.x =0;
+						}
+
+					}
+
+
+
+
+			}
+
+   	 		
+		
+
+			
+
+		</script>
+	</body>
+</html>
